@@ -6,7 +6,7 @@ def app():
 
     This application it made for rating hotels based on their review using a Machine learning algorithm
     """)
-    st.title("Contents")
+    st.title('Contents')
 
     st.write("Home Page")
 

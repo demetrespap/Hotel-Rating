@@ -8,5 +8,5 @@ def app():
     code = '''def hello():
     print("Hello, Streamlit!")'''
     st.code(code, 'Python')
-    st.button('Run')
+    st.button("Run")
 

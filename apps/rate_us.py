@@ -6,10 +6,16 @@ from sklearn.metrics import classification_report
 
 
 def app():
-    col1,cole2= st.columns(2)
+    col1,col2= st.columns(2)
 
     with col1:
         code = '''def hello():
-            print("Algorithm !")'''
+            print("Algorithm 1 !")'''
         st.code(code, 'Python')
-        st.button('Run')
+        st.button("Run 1")
+    with col2:
+        code = '''def hello():
+            print("Algorithm 2 !")'''
+        st.code(code, 'Python')
+        st.button("Run 2")
+
