@@ -6,23 +6,10 @@ from sklearn.metrics import classification_report
 
 
 def app():
-    st.title('This is new model app')
+    col1,cole2= st.columns(2)
 
-    st.write('This is new model app')
-
-    st.write('The model performance of our Algorithm is presented below.')
-
-    # Load iris dataset
-    iris = datasets.load_iris()
-    X = iris.data
-    Y = iris.target
-
-    # Model building
-    st.header('Model performance')
-    X_train, X_test, Y_train, Y_test = train_test_split(
-        X, Y, test_size=0.2, random_state=42)
-    clf = RandomForestClassifier()
-    clf.fit(X_train, Y_train)
-    score = clf.score(X_test, Y_test)
-    st.write('Accuracy:')
-    st.write(score)
+    with col1:
+        code = '''def hello():
+            print("Algorithm !")'''
+        st.code(code, 'Python')
+        st.button('Run')

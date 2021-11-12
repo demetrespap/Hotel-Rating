@@ -3,17 +3,22 @@ import numpy as np
 import pandas as pd
 from sklearn import datasets
 
+
+
 def app():
     st.title('Data')
 
     st.write("This is the `Data` page of the multi-page app.")
 
     st.write("The following is the DataFrame of the `iris` dataset.")
+    label = "Upload your training data here:"
+    st.subheader("Dataset")
+    data_file = st.file_uploader("Upload CSV", type=['csv'])
+    if st.button("Process"):
+        if data_file is not None:
+            file_details = {"Filename": data_file.name, "FileType": data_file.type, "FileSize": data_file.size}
+            st.write(file_details)
 
-    iris = datasets.load_iris()
-    X = pd.DataFrame(iris.data, columns = iris.feature_names)
-    Y = pd.Series(iris.target, name = 'class')
-    df = pd.concat([X,Y], axis=1)
-    df['class'] = df['class'].map({0:"setosa", 1:"versicolor", 2:"virginica"})
+            df = pd.read_csv(data_file)
+            st.dataframe(df)
 
-    st.write(df)
