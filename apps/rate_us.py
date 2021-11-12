@@ -1,4 +1,6 @@
+import numpy as np
 import streamlit as st
+import pandas as pd
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
@@ -19,3 +21,8 @@ def app():
         st.code(code, 'Python')
         st.button("Run 2")
 
+    #Chart
+    chart_data = pd.DataFrame(
+    np.random.randn(20, 3),
+    columns = ['a', 'b', 'c'])
+    st.line_chart(chart_data)
