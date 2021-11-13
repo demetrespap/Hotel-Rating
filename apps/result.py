@@ -7,9 +7,11 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report
 
 
+
 def app():
     st.header('Result')
     st.line_chart({"data": [1, 5, 2, 6, 2, 1]})
     with st.expander("See explanation"):
         st.write("""Text to describe the graph""")
+
 
