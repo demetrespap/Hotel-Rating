@@ -1,6 +1,6 @@
 import streamlit as st
 from multiapp import MultiApp
-from apps import home, data, model, rate_us, result, submit
+from apps import home, data, model, prepare_data, result, submit, choose_model
 
 # import your app modules here
 
@@ -10,7 +10,8 @@ app = MultiApp()
 app.add_app("Home", home.app)
 app.add_app("Data", data.app)
 app.add_app("Model", model.app)
-app.add_app("Choose Model", rate_us.app)
+app.add_app("Choose Model", choose_model.app)
+app.add_app("Choose Model", prepare_data.app)
 app.add_app("Result", result.app)
 app.add_app("Submit", submit.app)
 
