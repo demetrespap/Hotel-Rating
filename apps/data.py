@@ -11,8 +11,8 @@ from sklearn import datasets
 def app():
 
     st.title('Data')
-    st.write("This is the `Data` page of the multi-page app.")
-    st.write("The following is the DataFrame of the `iris` dataset.")
+    st.write("On this page the user will need to import a csv file. This file will contain data depending on the user review and the corresponding ratings. "
+             "This data will be displayed at the bottom of the screen and the csv file will be saved in the cache.")
     st.subheader("Dataset")
 
     file=reads_csv()

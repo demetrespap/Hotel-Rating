@@ -11,6 +11,8 @@ from sklearn.svm import LinearSVC
 from sklearn.metrics import classification_report
 from apps import data
 import preprocess_kgptalkie as ps
+
+
 import re
 from sklearn.metrics import plot_confusion_matrix
 
@@ -32,6 +34,8 @@ def get_clean(x):
   return x
 
 def app():
+  str.header("Prepare Data")
+  str.write("In this Page the code prepare the data to get into the Algorithm.")
   code = '''
   def get_clean(x):
   x = str(x).lower().replace('\\', '').replace('_', ' ')
