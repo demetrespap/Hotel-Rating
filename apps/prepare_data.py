@@ -46,7 +46,9 @@ def app():
   return x
         '''
   str.code(code,'python')
-  str.button("Run")
+  if str.button("Run",key=1):
+    new_df = get_average_data(df)
+    print(new_df['Rating'].value_counts())
 
   code2='''def get_average_data(df):
   max_num = (df.groupby(["Rating"]).count().sum()[0] / len(df["Rating"].unique()))
@@ -72,18 +74,16 @@ def app():
         new_df = pd.concat([new_df, df2], ignore_index = True, axis = 0)
     print(new_df['Rating'].value_counts())
   return new_df'''
-  str.code(code2, 'python')
-  str.button("Run2")
-    #new_df = get_average_data(df)
-    #print(new_df['Rating'].value_counts())
-  if str.button("Run"):
+  str.code(code2,'python')
+
+  if str.button('Run', key=2):
     x="hello"
     x=get_clean(x)
     str.write(x)
-    #print(new_df['Review'])
-    #new_df['Review'] = new_df['Review'].apply(lambda x: get_clean(x))
+    print(new_df['Review'])
+    new_df['Review'] = new_df['Review'].apply(lambda x: get_clean(x))
 
-"""
+
 def get_average_data(df):
   max_num = (df.groupby(["Rating"]).count().sum()[0] / len(df["Rating"].unique()))
   max_num = math.trunc(max_num)
@@ -108,5 +108,5 @@ def get_average_data(df):
         new_df = pd.concat([new_df, df2], ignore_index = True, axis = 0)
     print(new_df['Rating'].value_counts())
   return new_df
-  """
+
 
