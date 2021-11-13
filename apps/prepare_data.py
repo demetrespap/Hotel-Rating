@@ -9,7 +9,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.svm import LinearSVC
 from sklearn.metrics import classification_report
-
+from apps import data
 import preprocess_kgptalkie as ps
 import re
 from sklearn.metrics import plot_confusion_matrix
@@ -47,6 +47,7 @@ def app():
         '''
   str.code(code,'python')
   if str.button("Run",key=1):
+    df = data.reads_csv()
     new_df = get_average_data(df)
     print(new_df['Rating'].value_counts())
 
