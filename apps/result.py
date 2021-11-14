@@ -10,7 +10,8 @@ from sklearn.metrics import classification_report
 
 def app():
     st.header('Result')
-    code = '''print(classification_report(y_test.astype('int'), y_pred))
+    code = '''
+    print(classification_report(y_test.astype('int'), y_pred))
     plot_confusion_matrix(nbrs, X_test, y_test.astype('int'))'''
     st.code(code, language='python')
     st.button('Run')

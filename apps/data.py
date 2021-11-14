@@ -19,3 +19,11 @@ def app():
     if st.button("Process"):
         if file is not None:
             st.dataframe(file)
+
+
+    code2 ='''print(new_df['Rating'].value_counts())
+new_df.value_counts().plot.bar()'''
+    st.code(code2, 'python')
+    if st.button('Run'):
+        st.write('jdss')
+
