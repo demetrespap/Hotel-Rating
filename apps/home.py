@@ -16,6 +16,6 @@ def app():
                 unsafe_allow_html=True)
     st.markdown("<h2 style='text-align: center; font-size:20px;'>Model Page</h2>", unsafe_allow_html=True)
     st.markdown("<h2 style='text-align: center; font-size:20px;'>Result Page</h2>",
-                unsafe_allow_html=True)
+             unsafe_allow_html=True)
     st.markdown("<h2 style='text-align: center; font-size:20px;'>Submit Page</h2>",
                 unsafe_allow_html=True)
