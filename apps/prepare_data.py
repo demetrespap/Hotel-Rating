@@ -50,67 +50,14 @@ def app():
         '''
   str.code(code,'python')
   if str.button("Run",key=1):
-    df = data.reads_csv()
-    new_df = get_average_data(df)
-    print(new_df['Rating'].value_counts())
-
-  code2='''def get_average_data(df):
-  max_num = (df.groupby(["Rating"]).count().sum()[0] / len(df["Rating"].unique()))
-  max_num = math.trunc(max_num)
-  new_df = pd.DataFrame(data = None, columns=['Review','Rating'])
-  while(len(new_df.query('Rating == 1'))<=max_num or len(new_df.query('Rating == 2')) <= max_num or len(new_df.query('Rating == 3')) <= max_num
-  or len(new_df.query('Rating == 4')) <= max_num or len(new_df.query('Rating == 5')) <= max_num):
-    for index, row in df.iterrows():
-      if (row['Rating'] == 5 and (len(new_df.query('Rating == 5')) <= max_num)):
-        df2 = pd.DataFrame({'Review': [row['Review']], 'Rating' : [row['Rating']]})
-        new_df = pd.concat([new_df, df2], ignore_index = True, axis = 0)
-      if (row['Rating'] == 4 and (len(new_df.query('Rating == 4')) <= max_num)):
-        df2 = pd.DataFrame({'Review': [row['Review']], 'Rating' : [row['Rating']]})
-        new_df = pd.concat([new_df, df2], ignore_index = True, axis = 0)
-      if (row['Rating'] == 3 and (len(new_df.query('Rating == 3')) <= max_num)):
-        df2 = pd.DataFrame({'Review': [row['Review']], 'Rating' : [row['Rating']]})
-        new_df = pd.concat([new_df, df2], ignore_index = True, axis = 0)
-      if (row['Rating'] == 2 and (len(new_df.query('Rating == 2')) <= max_num)):
-        df2 = pd.DataFrame({'Review': [row['Review']], 'Rating' : [row['Rating']]})
-        new_df = pd.concat([new_df, df2], ignore_index = True, axis = 0)
-      if (row['Rating'] == 1 and (len(new_df.query('Rating == 1')) <= max_num)):
-        df2 = pd.DataFrame({'Review': [row['Review']], 'Rating' : [row['Rating']]})
-        new_df = pd.concat([new_df, df2], ignore_index = True, axis = 0)
-    print(new_df['Rating'].value_counts())
-  return new_df'''
-  str.code(code2,'python')
-
-  if str.button('Run', key=2):
-    x="hello"
-    x=get_clean(x)
+    x = "hello"
+    x = get_clean(x)
     str.write(x)
-    print(new_df['Review'])
-    new_df['Review'] = new_df['Review'].apply(lambda x: get_clean(x))
+    print(x['Review'])
+    x['Review'] = x['Review'].apply(lambda x: get_clean(x))
 
 
-def get_average_data(df):
-  max_num = (df.groupby(["Rating"]).count().sum()[0] / len(df["Rating"].unique()))
-  max_num = math.trunc(max_num)
-  new_df = pd.DataFrame(data = None, columns=['Review','Rating'])
-  while(len(new_df.query('Rating == 1'))<=max_num or len(new_df.query('Rating == 2')) <= max_num or len(new_df.query('Rating == 3')) <= max_num
-  or len(new_df.query('Rating == 4')) <= max_num or len(new_df.query('Rating == 5')) <= max_num):
-    for index, row in df.iterrows():
-      if (row['Rating'] == 5 and (len(new_df.query('Rating == 5')) <= max_num)):
-        df2 = pd.DataFrame({'Review': [row['Review']], 'Rating' : [row['Rating']]})
-        new_df = pd.concat([new_df, df2], ignore_index = True, axis = 0)
-      if (row['Rating'] == 4 and (len(new_df.query('Rating == 4')) <= max_num)):
-        df2 = pd.DataFrame({'Review': [row['Review']], 'Rating' : [row['Rating']]})
-        new_df = pd.concat([new_df, df2], ignore_index = True, axis = 0)
-      if (row['Rating'] == 3 and (len(new_df.query('Rating == 3')) <= max_num)):
-        df2 = pd.DataFrame({'Review': [row['Review']], 'Rating' : [row['Rating']]})
-        new_df = pd.concat([new_df, df2], ignore_index = True, axis = 0)
-      if (row['Rating'] == 2 and (len(new_df.query('Rating == 2')) <= max_num)):
-        df2 = pd.DataFrame({'Review': [row['Review']], 'Rating' : [row['Rating']]})
-        new_df = pd.concat([new_df, df2], ignore_index = True, axis = 0)
-      if (row['Rating'] == 1 and (len(new_df.query('Rating == 1')) <= max_num)):
-        df2 = pd.DataFrame({'Review': [row['Review']], 'Rating' : [row['Rating']]})
-        new_df = pd.concat([new_df, df2], ignore_index = True, axis = 0)
-    print(new_df['Rating'].value_counts())
-  return new_df
+
+
 
 
