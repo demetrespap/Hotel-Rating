@@ -20,7 +20,10 @@ import imblearn
 
 
 def get_clean(x):
-  x = str(x).lower().replace('\\', '').replace('_', ' ')
+  x = str(x)
+  x.lower(x)
+  x.replace('\\', '')
+  x.replace('_', ' ')
   x = ps.cont_exp(x)
   x = ps.remove_emails(x)
   x = ps.remove_urls(x)
