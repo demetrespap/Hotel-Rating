@@ -1,6 +1,7 @@
 import self as self
 import streamlit as st
 import spacy
+
 import pandas as pd
 import numpy as np
 import seaborn as sns
@@ -15,7 +16,7 @@ import re
 import string
 from sklearn.metrics import plot_confusion_matrix
 import imblearn
-
+import config
 from sklearn.naive_bayes import GaussianNB
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import RandomForestClassifier
@@ -72,28 +73,45 @@ y_pred = clf.predict(X_test)
         st.code(code6, 'Python')
 
 
-    st.radio("Choose an algorithm to run",('Gaussian NB','KNeighborsClassifier','RFS','CLF'))
+    algo=st.selectbox("Choose an algorithm to run",(' ','Gaussian NB','KNeighborsClassifier','RFS','CLF'))
+    file = config.file
 
-    #Chart
-    # chart_data = pd.DataFrame(
-    # np.random.randn(20, 3),
-    # columns = ['a', 'b', 'c'])
-    # st.line_chart(chart_data)
+    if algo == 'Gaussian NB':
+        st.write("A")
+        df_for_training = nlp_represent(file)
+        X = df_for_training.drop(columns=['Review', 'Rating', 'Review_vec'])
+        y = df_for_training['Rating']
+        gaussianNB(X,y)
+        st.write("B")
+
+    elif algo == 'KNeighborsClassifier':
+            st.write("C")
+            df_for_training = nlp_represent(file)
+            X = df_for_training.drop(columns=['Review', 'Rating', 'Review_vec'])
+            y = df_for_training['Rating']
+            KNeighboursClassifier(X,y)
+            st.write("D")
+
+    elif algo == 'RFS':
+            st.write("E")
+            df_for_training = nlp_represent(file)
+            X = df_for_training.drop(columns=['Review', 'Rating', 'Review_vec'])
+            y = df_for_training['Rating']
+            RandomClassifiers(X,y)
+            st.write("F")
+
+    elif algo == 'CLF':
+            st.write("G")
+            df_for_training = get_average_data(file)
+            tfidf = TfidfVectorizer(max_features=15000, ngram_range=(1, 5), analyzer='char')
+            X = tfidf.fit_transform(df_for_training['Review'])
+            y = df_for_training['Rating']
+            clf(X,y)
+            st.write("H")
 
 
-
-    # DEPENDED from choosed model
+    #DEPENDED from choosed model
     #*******************************
-
-
-
-
-
-
-
-
-
-
     st.write("Get average Data ")
     # get balaned data
     code = '''def get_average_data(df):
@@ -122,23 +140,18 @@ y_pred = clf.predict(X_test)
           return new_df'''
     st.code(code, 'python')
 
-    #if st.button('Run', key=2):
-     #   df = data.reads_csv()
-      #  print(df)
-       # new_df = get_average_data(df)
-        #print(new_df['Rating'].value_counts())
     st.write("NLP Represenent ")
     code7 = '''
-gnb = def nlp_represent(df):
-nlp = spacy.load("en_core_web_lg")
-def vector_representation(row):
-doc = nlp(row['Review'])
-return doc.vector
-df['Review_vec'] = df.apply(vector_representation, axis=1)
-df_vector = df.Review_vec.apply(pd.Series)
-df_vector
-df_for_training = df.join(df_vector)
-return df_for_training
+def nlp_represent(df):
+    nlp = spacy.load("en_core_web_lg")
+    def vector_representation(row):
+        doc = nlp(row['Review'])
+        return doc.vector
+    df['Review_vec'] = df.apply(vector_representation, axis=1)
+    df_vector = df.Review_vec.apply(pd.Series)
+    df_vector
+    df_for_training = df.join(df_vector)
+    return df_for_training
         '''
     st.code(code7, 'Python')
 
@@ -179,4 +192,72 @@ def get_average_data(df):
                 new_df = pd.concat([new_df, df2], ignore_index=True, axis=0)
         print(new_df['Rating'].value_counts())
     return new_df
-    
+
+def nlp_represent(df):
+    nlp = spacy.load("en_core_web_lg")
+    def vector_representation(row):
+        doc = nlp(row['Review'])
+        return doc.vector
+    df['Review_vec'] = df.apply(vector_representation, axis=1)
+    df_vector = df.Review_vec.apply(pd.Series)
+    df_vector
+    df_for_training = df.join(df_vector)
+    return df_for_training
+
+
+# ALGORITHMS
+# ===============================================================
+
+def gaussianNB(X,y):
+    st.write("1")
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
+    gnb = GaussianNB()
+    gnb.fit(X_train, y_train)
+    y_pred = gnb.predict(X_test)
+    print(classification_report(y_test.astype('int'), y_pred))
+    plot_confusion_matrix(gnb, X_test, y_test.astype('int'))
+    config.gnb = gnb
+    config.X_test = X_test
+    config.y_test = y_test
+    st.write("2")
+
+def KNeighboursClassifier(X,y):
+    st.write("3")
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
+    nbrs = KNeighborsClassifier()
+    nbrs.fit(X_train, y_train)
+    y_pred = nbrs.predict(X_test)
+    print(classification_report(y_test.astype('int'), y_pred))
+    plot_confusion_matrix(nbrs, X_test, y_test.astype('int'))
+    config.nbrs = nbrs
+    config.X_test = X_test
+    config.y_test = y_test
+    st.write("4")
+
+def RandomClassifiers(X,y):
+    st.write("5")
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
+    rfs = RandomForestClassifier()
+    rfs.fit(X_train, y_train)
+    y_pred = rfs.predict(X_test)
+    print(classification_report(y_test.astype('int'), y_pred))
+    plot_confusion_matrix(rfs, X_test, y_test.astype('int'))
+    config.rfs = rfs
+    config.X_test = X_test
+    config.y_test = y_test
+    st.write("6")
+
+
+def clf(X,y):
+    st.write("7")
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
+    clf = LinearSVC(C=10, class_weight='balanced')
+    y_train = y_train.astype('int')
+    clf.fit(X_train, y_train)
+    y_pred = clf.predict(X_test)
+    print(classification_report(y_test.astype('int'), y_pred))
+    plot_confusion_matrix(clf, X_test, y_test.astype('int'))
+    config.clf=clf
+    config.X_test = X_test
+    config.y_test = y_test
+    st.write("8")
