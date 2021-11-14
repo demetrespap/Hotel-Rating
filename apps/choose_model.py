@@ -74,41 +74,41 @@ y_pred = clf.predict(X_test)
 
 
     algo=st.selectbox("Choose an algorithm to run",(' ','Gaussian NB','KNeighborsClassifier','RFS','CLF'))
-    file = config.file
-
-    if algo == 'Gaussian NB':
-        st.write("A")
-        df_for_training = nlp_represent(file)
-        X = df_for_training.drop(columns=['Review', 'Rating', 'Review_vec'])
-        y = df_for_training['Rating']
-        gaussianNB(X,y)
-        st.write("B")
-
-    elif algo == 'KNeighborsClassifier':
-            st.write("C")
+    if config.file is not None:
+        file = config.file
+        if algo == 'Gaussian NB':
+            st.write("A")
             df_for_training = nlp_represent(file)
             X = df_for_training.drop(columns=['Review', 'Rating', 'Review_vec'])
             y = df_for_training['Rating']
-            KNeighboursClassifier(X,y)
-            st.write("D")
+            gaussianNB(X,y)
+            st.write("B")
 
-    elif algo == 'RFS':
-            st.write("E")
-            df_for_training = nlp_represent(file)
-            X = df_for_training.drop(columns=['Review', 'Rating', 'Review_vec'])
-            y = df_for_training['Rating']
-            RandomClassifiers(X,y)
-            st.write("F")
+        elif algo == 'KNeighborsClassifier':
+                st.write("C")
+                df_for_training = nlp_represent(file)
+                X = df_for_training.drop(columns=['Review', 'Rating', 'Review_vec'])
+                y = df_for_training['Rating']
+                KNeighboursClassifier(X,y)
+                st.write("D")
 
-    elif algo == 'CLF':
-            st.write("G")
-            df_for_training = get_average_data(file)
-            tfidf = TfidfVectorizer(max_features=15000, ngram_range=(1, 5), analyzer='char')
-            config.tfidf = tfidf
-            X = tfidf.fit_transform(df_for_training['Review'])
-            y = df_for_training['Rating']
-            clf(X,y)
-            st.write("H")
+        elif algo == 'RFS':
+                st.write("E")
+                df_for_training = nlp_represent(file)
+                X = df_for_training.drop(columns=['Review', 'Rating', 'Review_vec'])
+                y = df_for_training['Rating']
+                RandomClassifiers(X,y)
+                st.write("F")
+
+        elif algo == 'CLF':
+                st.write("G")
+                df_for_training = get_average_data(file)
+                tfidf = TfidfVectorizer(max_features=15000, ngram_range=(1, 5), analyzer='char')
+                config.tfidf = tfidf
+                X = tfidf.fit_transform(df_for_training['Review'])
+                y = df_for_training['Rating']
+                clf(X,y)
+                st.write("H")
 
 
     #DEPENDED from choosed model

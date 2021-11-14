@@ -11,6 +11,7 @@ import config
 def app():
 
     file = None
+
     st.title('Data')
     st.write("On this page the user will need to import a csv file. This file will contain data depending on the user review and the corresponding ratings. "
              "This data will be displayed at the bottom of the screen and the csv file will be saved in the cache.")
