@@ -25,18 +25,52 @@ def app():
     st.header('Choose Model')
     st.write("In the Page you have to choose the Algorithm you want to Run.")
 
-    # col1,col2= st.columns(2)
-    #
-    # with col1:
-    #     code = '''def hello():
-    #         print("Algorithm 1 !")'''
-    #     st.code(code, 'Python')
-    #     st.button("Run Algorithm 1")
-    # with col2:
-    #     code = '''def hello():
-    #         print("Algorithm 2 !")'''
-    #     st.code(code, 'Python')
-    #     st.button("Run Algorithm 2")
+    col1,col2 = st.columns(2)
+    col3,col4 = st.columns(2)
+
+    with col1:
+        st.write("Gaussian NB")
+        code3 = '''
+gnb = GaussianNB()
+gnb.fit(X_train, y_train)
+y_pred = gnb.predict(X_test)
+print(classification_report(y_test.astype('int'), y_pred))
+plot_confusion_matrix(gnb, X_test, y_test.astype('int'))
+            '''
+        st.code(code3, 'Python')
+        st.button("Run Algorithm 1")
+    with col2:
+        st.write("KNeighborsClassifier")
+        code4 = '''
+nbrs = KNeighborsClassifier()
+nbrs.fit(X_train, y_train)
+y_pred = nbrs.predict(X_test)
+print(classification_report(y_test.astype('int'), y_pred))
+plot_confusion_matrix(nbrs, X_test, y_test.astype('int'))
+                '''
+        st.code(code4, 'Python')
+        st.button("Run Algorithm 2")
+    with col3:
+        st.write("RFS")
+        code5 = '''
+rfs = RandomForestClassifier()
+rfs.fit(X_train, y_train)
+y_pred = nbrs.predict(X_test)
+print(classification_report(y_test.astype('int'), y_pred))
+plot_confusion_matrix(nbrs, X_test, y_test.astype('int'))
+                    '''
+        st.code(code5, 'Python')
+        st.button("Run Algorithm 3")
+    with col4:
+        st.write("CLF")
+        code6 = '''
+clf = LinearSVC(C=10, class_weight='balanced')
+y_train=y_train.astype('int')
+clf.fit(X_train, y_train)
+y_pred = clf.predict(X_test)
+                 '''
+        st.code(code6, 'Python')
+        st.button("Run Algorithm 4")
 
     st.radio("Choose an algorithm to run",('Gaussian NB','KNeighborsClassifier','RFS','CLF'))
 
@@ -52,42 +86,13 @@ def app():
     #*******************************
 
 
-    st.write("Gaussian NB")
-    code3='''
-gnb = GaussianNB()
-gnb.fit(X_train, y_train)
-y_pred = gnb.predict(X_test)
-print(classification_report(y_test.astype('int'), y_pred))
-plot_confusion_matrix(gnb, X_test, y_test.astype('int'))
-    '''
-    st.code(code3, 'Python')
-    st.write("KNeighborsClassifier")
-    code4 = '''
-nbrs = KNeighborsClassifier()
-nbrs.fit(X_train, y_train)
-y_pred = nbrs.predict(X_test)
-print(classification_report(y_test.astype('int'), y_pred))
-plot_confusion_matrix(nbrs, X_test, y_test.astype('int'))
-        '''
-    st.code(code4, 'Python')
 
-    st.write("RFS")
-    code5 = '''
-rfs = RandomForestClassifier()
-rfs.fit(X_train, y_train)
-y_pred = nbrs.predict(X_test)
-print(classification_report(y_test.astype('int'), y_pred))
-plot_confusion_matrix(nbrs, X_test, y_test.astype('int'))
-            '''
-    st.code(code5, 'Python')
-    st.write("CLF")
-    code6 = '''
-clf = LinearSVC(C=10, class_weight='balanced')
-y_train=y_train.astype('int')
-clf.fit(X_train, y_train)
-y_pred = clf.predict(X_test)
-            '''
-    st.code(code6, 'Python')
+
+
+
+
+
+
 
     st.write("Get average Data ")
     # get balaned data
