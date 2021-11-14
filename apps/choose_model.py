@@ -36,7 +36,7 @@ def app():
             print("Algorithm 2 !")'''
         st.code(code, 'Python')
         st.button("Run Algorithm 2")
-
+    st.radio("Choose an algorithm to run",('Gaussian NB','KNeighborsClassifier','RFS','CLF'))
     #Chart
     # chart_data = pd.DataFrame(
     # np.random.randn(20, 3),
@@ -133,8 +133,6 @@ df_for_training = df.join(df_vector)
 return df_for_training
         '''
     st.code(code7, 'Python')
-
-    st.write("NLP Represent")
 
     st.write("Training collumns")
     code8 = '''

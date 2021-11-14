@@ -13,7 +13,7 @@ from apps import data
 import preprocess_kgptalkie as ps
 import re
 from sklearn.metrics import plot_confusion_matrix
-
+import config
 # check version number
 import imblearn
 
@@ -35,6 +35,9 @@ def get_clean(x):
   return x
 
 def app():
+  str.header('Prepare Data')
+  str.write("In this Page we clean the Data.We will capture the data from the csv file, from the previous page.")
+
   code = '''
   def get_clean(x):
   x = str(x).lower().replace('\\', '').replace('_', ' ')
@@ -48,16 +51,32 @@ def app():
   x = re.sub("(.)\\1{2,}", "\\1", x)
   return x
         '''
-  str.code(code,'python')
+  str.code(code, 'python')
   if str.button("Run",key=1):
-    x = "hello"
+    x = config.file
     x = get_clean(x)
     str.write(x)
     print(x['Review'])
     x['Review'] = x['Review'].apply(lambda x: get_clean(x))
 
-
-
-
+  str.write(
+    "•The lower () method takes no arguments and returns the lowercased strings from the given string by converting each uppercase character to lowercase. "
+    "If there are no uppercase characters in the given string, it returns the original string.This code appears in the first line of the above code"
+    ":x = str(x).lower().replace('\\', '').replace('_', ' ').")
+  str.write(
+    "•Compound statements span multiple lines, although in simple incarnations a whole compound statement may be contained in one line. This code appears in the second line:x =ps.cont_exp(x).")
+  str.write(
+    "•Remove emails expression will delete if there is emails in the code. This code appears in the third line: x = ps.remove_emails(x).")
+  str.write(
+    "•Remove URLs expression will delete if there is URLs in the code. This code appears in the third line: x = ps.remove_urls(x).")
+  str.write(
+    "•Remove Html Tags expression will delete if there is Html Tags in the code. This code appears in the third line: x = ps.remove_html_tags(x).")
+  str.write(
+    "•Remove Strings expression will delete if there is Strings in the object added to filename. This code appears in the third line:   x = ps.remove_rt(x).")
+  str.write(
+    "•Remove Accented Characters expression will delete Unidecode and convert it to Ascii Code. This code appears in the third line:   x = ps.remove_accented_chars(x).")
+  str.write(
+    "•Remove Special Characters expression will delete all special characters in the code. This code appears in the third line:     x = ps.remove_special_chars(x).")
+  str.write("•This Regular Expression x = re.sub('(.)\\1{2,}', '\\1', x) is used to normalize the data.")
 
 
