@@ -38,7 +38,7 @@ print(classification_report(y_test.astype('int'), y_pred))
 plot_confusion_matrix(gnb, X_test, y_test.astype('int'))
             '''
         st.code(code3, 'Python')
-        st.button("Run Algorithm 1")
+
     with col2:
         st.write("KNeighborsClassifier")
         code4 = '''
@@ -49,7 +49,7 @@ print(classification_report(y_test.astype('int'), y_pred))
 plot_confusion_matrix(nbrs, X_test, y_test.astype('int'))
                 '''
         st.code(code4, 'Python')
-        st.button("Run Algorithm 2")
+
     with col3:
         st.write("RFS")
         code5 = '''
@@ -60,7 +60,7 @@ print(classification_report(y_test.astype('int'), y_pred))
 plot_confusion_matrix(nbrs, X_test, y_test.astype('int'))
                     '''
         st.code(code5, 'Python')
-        st.button("Run Algorithm 3")
+
     with col4:
         st.write("CLF")
         code6 = '''
@@ -70,7 +70,7 @@ clf.fit(X_train, y_train)
 y_pred = clf.predict(X_test)
                  '''
         st.code(code6, 'Python')
-        st.button("Run Algorithm 4")
+
 
     st.radio("Choose an algorithm to run",('Gaussian NB','KNeighborsClassifier','RFS','CLF'))
 
