@@ -20,8 +20,8 @@ import imblearn
 
 
 def get_clean(x):
-  x = str(x)
-  x.lower(x)
+
+  x.lower()
   x.replace('\\', '')
   x.replace('_', ' ')
   x = ps.cont_exp(x)
@@ -54,7 +54,6 @@ def app():
   str.code(code, 'python')
   if str.button("Run",key=1):
     x = config.file
-    x = get_clean(x)
     str.write(x)
     print(x['Review'])
     x['Review'] = x['Review'].apply(lambda x: get_clean(x))
