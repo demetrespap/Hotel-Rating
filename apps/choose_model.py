@@ -104,6 +104,7 @@ y_pred = clf.predict(X_test)
             st.write("G")
             df_for_training = get_average_data(file)
             tfidf = TfidfVectorizer(max_features=15000, ngram_range=(1, 5), analyzer='char')
+            config.tfidf = tfidf
             X = tfidf.fit_transform(df_for_training['Review'])
             y = df_for_training['Rating']
             clf(X,y)
@@ -214,11 +215,11 @@ def gaussianNB(X,y):
     gnb = GaussianNB()
     gnb.fit(X_train, y_train)
     y_pred = gnb.predict(X_test)
-    print(classification_report(y_test.astype('int'), y_pred))
-    plot_confusion_matrix(gnb, X_test, y_test.astype('int'))
-    config.gnb = gnb
+    config.type = gnb
     config.X_test = X_test
     config.y_test = y_test
+    config.y_pred = y_pred
+    config.sub_pred = 1
     st.write("2")
 
 def KNeighboursClassifier(X,y):
@@ -227,11 +228,11 @@ def KNeighboursClassifier(X,y):
     nbrs = KNeighborsClassifier()
     nbrs.fit(X_train, y_train)
     y_pred = nbrs.predict(X_test)
-    print(classification_report(y_test.astype('int'), y_pred))
-    plot_confusion_matrix(nbrs, X_test, y_test.astype('int'))
-    config.nbrs = nbrs
+    config.type = nbrs
     config.X_test = X_test
     config.y_test = y_test
+    config.y_pred = y_pred
+    config.sub_pred = 1
     st.write("4")
 
 def RandomClassifiers(X,y):
@@ -240,11 +241,11 @@ def RandomClassifiers(X,y):
     rfs = RandomForestClassifier()
     rfs.fit(X_train, y_train)
     y_pred = rfs.predict(X_test)
-    print(classification_report(y_test.astype('int'), y_pred))
-    plot_confusion_matrix(rfs, X_test, y_test.astype('int'))
-    config.rfs = rfs
+    config.type = rfs
     config.X_test = X_test
     config.y_test = y_test
+    config.y_pred = y_pred
+    config.sub_pred = 1
     st.write("6")
 
 
@@ -255,9 +256,13 @@ def clf(X,y):
     y_train = y_train.astype('int')
     clf.fit(X_train, y_train)
     y_pred = clf.predict(X_test)
-    print(classification_report(y_test.astype('int'), y_pred))
-    plot_confusion_matrix(clf, X_test, y_test.astype('int'))
-    config.clf=clf
+    config.type = clf
     config.X_test = X_test
     config.y_test = y_test
+    config.y_pred = y_pred
+    config.sub_pred = 0
     st.write("8")
+
+
+
+# print(classification_report(y_test.astype('int'), y_pred))

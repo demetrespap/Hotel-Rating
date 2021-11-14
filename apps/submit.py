@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import streamlit as st
+import spacy
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
@@ -8,6 +9,7 @@ from sklearn.metrics import classification_report
 from streamlit.proto.SessionState_pb2 import SessionState
 import preprocess_kgptalkie as ps
 import re
+from apps import data
 import config
 
 
@@ -35,15 +37,24 @@ def app():
     with st.form("my_forms"):
 
         title = st.text_input("")
+        rating = 0
+        if config.sub_pred == 0:
+            title = get_clean(title)
+            vec = config.tfidf.transform([title])
+            rating = config.type.predict(vec)[0]
+        elif config.sub_pred == 1:
+            nlp = spacy.load("en_core_web_lg")
+            doc = nlp(title)
+            script_vector = pd.DataFrame(doc.vector)
+            rating = config.type.predict(script_vector.T)[0]
+
         submit = st.form_submit_button("Submission:")
-        converted_num = None
-        if title.isdecimal():
-            converted_num = int(title)
+
         if submit:
             st.success('This is a success message!')
-        slider_val = st.slider("Rating Slider", min_value=1, max_value=5, value=converted_num)
+        slider_val = st.slider("Rating Slider", min_value=1, max_value=5, value=rating)
         st.write("Rating set to:", slider_val)
-        if converted_num == 5:
+        if rating == 5:
             st.balloons()
 
 

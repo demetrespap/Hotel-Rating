@@ -1,12 +1,16 @@
 import sys
 
+import altair as alt
+import seaborn as sns
 import streamlit as st
 import numpy as np
 import pandas as pd
 from sklearn import datasets
+import matplotlib.pyplot as plt
 import config
 def app():
 
+    file = None
     st.title('Data')
     st.write("On this page the user will need to import a csv file. This file will contain data depending on the user review and the corresponding ratings. "
              "This data will be displayed at the bottom of the screen and the csv file will be saved in the cache.")
@@ -22,8 +26,16 @@ def app():
 
 
     code2 ='''print(new_df['Rating'].value_counts())
-new_df.value_counts().plot.bar()'''
+    new_df.value_counts().plot.bar()'''
     st.code(code2, 'python')
     if st.button('Run'):
-        st.write('jdss')
+
+        # st.write(config.file['Rating'].value_counts().plot().bar())
+        # st.write(file['Rating'].unique())
+        # a = file['Rating'].value_counts()
+        # sns.barplot(a)
+        sns.countplot(x="Rating", data=file)
+        st.pyplot()
+
+
 
