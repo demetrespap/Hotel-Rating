@@ -12,7 +12,6 @@ import config
 
 
 def app():
-
     st.header('Submit Form')
     st.write('In this Page the user has the option to add review for the Hotel.'
              'The Algorithm takes this result and find the review. Also,the Page it shows this Rating in Message.'
@@ -34,28 +33,30 @@ def app():
     st.subheader('Data converted:')
 
     with st.form("my_forms"):
+
         title = st.text_input("")
         submit = st.form_submit_button("Submission:")
+        converted_num = None
+        if title.isdecimal():
+            converted_num = int(title)
         if submit:
             st.success('This is a success message!')
-        slider_val = st.slider("Rating Slider", min_value=1, max_value=5, value=1)
-    if slider_val:
+        slider_val = st.slider("Rating Slider", min_value=1, max_value=5, value=converted_num)
         st.write("Rating set to:", slider_val)
-    st.balloons()
-
+        if converted_num == 5:
+            st.balloons()
 
 
 def get_clean(x):
-
-  x.lower()
-  x.replace('\\', '')
-  x.replace('_', ' ')
-  x = ps.cont_exp(x)
-  x = ps.remove_emails(x)
-  x = ps.remove_urls(x)
-  x = ps.remove_html_tags(x)
-  x = ps.remove_rt(x)
-  x = ps.remove_accented_chars(x)
-  x = ps.remove_special_chars(x)
-  x = re.sub("(.)\\1{2,}", "\\1", x)
-  return x
+    x.lower()
+    x.replace('\\', '')
+    x.replace('_', ' ')
+    x = ps.cont_exp(x)
+    x = ps.remove_emails(x)
+    x = ps.remove_urls(x)
+    x = ps.remove_html_tags(x)
+    x = ps.remove_rt(x)
+    x = ps.remove_accented_chars(x)
+    x = ps.remove_special_chars(x)
+    x = re.sub("(.)\\1{2,}", "\\1", x)
+    return x
