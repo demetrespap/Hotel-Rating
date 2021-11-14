@@ -21,6 +21,5 @@ config.X_test = None
 config.y_test = None
 config.y_pred = None
 config.sub_pred = None
-config.file = None
 # The main app
 app.run()

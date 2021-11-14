@@ -14,6 +14,7 @@ import preprocess_kgptalkie as ps
 import re
 from sklearn.metrics import plot_confusion_matrix
 import config
+from apps import data
 # check version number
 import imblearn
 
