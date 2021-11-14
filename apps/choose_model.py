@@ -18,18 +18,20 @@ import imblearn
 
 
 def app():
+    st.header('Choose Model')
+    st.write("In the Page you have to choose the Algorithm you want to Run.")
     col1,col2= st.columns(2)
 
     with col1:
         code = '''def hello():
             print("Algorithm 1 !")'''
         st.code(code, 'Python')
-        st.button("Run 1")
+        st.button("Run Algorithm 1")
     with col2:
         code = '''def hello():
             print("Algorithm 2 !")'''
         st.code(code, 'Python')
-        st.button("Run 2")
+        st.button("Run Algorithm 2")
 
     #Chart
     chart_data = pd.DataFrame(

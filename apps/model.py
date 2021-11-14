@@ -5,6 +5,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report
 
 def app():
+    st.header('Run Model')
+    st.write("In this Page user is select the Model that they want to Run.")
     code = '''def hello():
     print("Hello, Streamlit!")'''
     st.code(code, 'Python')
