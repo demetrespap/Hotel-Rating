@@ -55,8 +55,8 @@ def app():
   if str.button("Run",key=1):
     x = config.file
     str.write(x)
-    print(x['Review'])
     x['Review'] = x['Review'].apply(lambda x: get_clean(x))
+    print(x['Review'])
 
   str.write(
     "•The lower () method takes no arguments and returns the lowercased strings from the given string by converting each uppercase character to lowercase. "

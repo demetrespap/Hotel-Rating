@@ -24,19 +24,22 @@ from sklearn.ensemble import RandomForestClassifier
 def app():
     st.header('Choose Model')
     st.write("In the Page you have to choose the Algorithm you want to Run.")
-    col1,col2= st.columns(2)
 
-    with col1:
-        code = '''def hello():
-            print("Algorithm 1 !")'''
-        st.code(code, 'Python')
-        st.button("Run Algorithm 1")
-    with col2:
-        code = '''def hello():
-            print("Algorithm 2 !")'''
-        st.code(code, 'Python')
-        st.button("Run Algorithm 2")
+    # col1,col2= st.columns(2)
+    #
+    # with col1:
+    #     code = '''def hello():
+    #         print("Algorithm 1 !")'''
+    #     st.code(code, 'Python')
+    #     st.button("Run Algorithm 1")
+    # with col2:
+    #     code = '''def hello():
+    #         print("Algorithm 2 !")'''
+    #     st.code(code, 'Python')
+    #     st.button("Run Algorithm 2")
+
     st.radio("Choose an algorithm to run",('Gaussian NB','KNeighborsClassifier','RFS','CLF'))
+
     #Chart
     # chart_data = pd.DataFrame(
     # np.random.randn(20, 3),
