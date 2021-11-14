@@ -4,7 +4,7 @@ import streamlit as st
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import classification_report, plot_confusion_matrix, ConfusionMatrixDisplay
+from sklearn.metrics import classification_report, plot_confusion_matrix
 from apps import choose_model
 import config
 
@@ -20,7 +20,6 @@ def app():
             plot_confusion_matrix(config.type, config.X_test, config.y_test.astype('int'))
             st.set_option('deprecation.showPyplotGlobalUse', False)
             st.pyplot()
-            st.write(classification_report(config.y_test.astype('int'), config.y_pred))
 
     with st.expander("See explanation for the above:"):
         st.write("""When we select the Run button, the code at the top of the screen will run. 
