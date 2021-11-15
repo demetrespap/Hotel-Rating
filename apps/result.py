@@ -20,10 +20,8 @@ def app():
             plot_confusion_matrix(config.type, config.X_test, config.y_test.astype('int'))
             st.set_option('deprecation.showPyplotGlobalUse', False)
             st.pyplot()
+            st.write(classification_report(config.y_test.astype('int'),config.y_pred))
 
     with st.expander("See explanation for the above:"):
         st.write("""When we select the Run button, the code at the top of the screen will run. 
         This data, are the reviews that will appears in the graph shown above. This rating will be from 1 to 5 in relation to the time it took to run.  """)
-
-#
-

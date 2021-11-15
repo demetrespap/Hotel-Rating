@@ -11,4 +11,3 @@ def app():
     print("Hello, Streamlit!")'''
     st.code(code, 'Python')
     st.button("Run")
-

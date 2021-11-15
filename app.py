@@ -15,10 +15,4 @@ app.add_app("Choose Model", choose_model.app)
 app.add_app("Result", result.app)
 app.add_app("Submit", submit.app)
 
-# config.tfidf = None
-# config.X_test = None
-# config.y_test = None
-# config.y_pred = None
-# config.sub_pred = None
-# The main app
 app.run()

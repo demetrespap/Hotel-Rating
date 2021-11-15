@@ -262,7 +262,3 @@ def clf(X,y):
     config.y_pred = y_pred
     config.sub_pred = 0
     st.write("8")
-
-
-
-# print(classification_report(y_test.astype('int'), y_pred))

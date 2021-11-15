@@ -44,12 +44,13 @@ def app():
             title = get_clean(title)
             vec = config.tfidf.transform([title])
             rating = config.type.predict(vec)[0]
-            rating  = int(rating)
+            rating = int(rating)
         elif config.sub_pred == 1:
             nlp = spacy.load("en_core_web_lg")
             doc = nlp(title)
             script_vector = pd.DataFrame(doc.vector)
             rating = config.type.predict(script_vector.T)[0]
+            rating = int(rating)
 
         submit = st.form_submit_button("Submit")
 

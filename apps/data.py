@@ -25,18 +25,10 @@ def app():
         if file is not None:
             st.dataframe(file)
 
-
     code2 ='''print(new_df['Rating'].value_counts())
     new_df.value_counts().plot.bar()'''
     st.code(code2, 'python')
     if st.button('Run'):
-
-        # st.write(config.file['Rating'].value_counts().plot().bar())
-        # st.write(file['Rating'].unique())
-        # a = file['Rating'].value_counts()
-        # sns.barplot(a)
         sns.countplot(x="Rating", data=file)
+        st.set_option('deprecation.showPyplotGlobalUse', False)
         st.pyplot()
-
-
-

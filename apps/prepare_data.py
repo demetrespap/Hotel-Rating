@@ -78,5 +78,3 @@ def app():
   str.write(
     "•Remove Special Characters expression will delete all special characters in the code. This code appears in the third line:     x = ps.remove_special_chars(x).")
   str.write("•This Regular Expression x = re.sub('(.)\\1{2,}', '\\1', x) is used to normalize the data.")
-
-
