@@ -14,5 +14,4 @@ app.add_app("Choose Model", choose_model.app)
 # app.add_app("Model", model.app)
 app.add_app("Result", result.app)
 app.add_app("Submit", submit.app)
-
 app.run()
