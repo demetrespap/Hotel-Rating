@@ -69,7 +69,7 @@ def app():
                 slider_val = st.slider("Rating Slider", min_value=1, max_value=5, value=rating)
                 st.write("Rating set to:", slider_val)
             if rating == 5:
-                st.success('This is a success message!')
+                st.success('Review added successful')
                 st.balloons()
 
 
