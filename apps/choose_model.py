@@ -79,7 +79,8 @@ y_pred = clf.predict(X_test)
 It's specifically used when the features have continuous values. It's also assumed that all the features are following a gaussian distribution ''',height=150)
     st.text_area(" KNeighborsClassifier ",''' K-Nearest Neighbors, or KNN for short, is one of the simplest machine learning algorithms and is used in a wide array of institutions. KNN is a non-parametric, lazy learning algorithm. When we say a technique is non-parametric, it means that it does not make any assumptions about the underlying data. In other words, it makes its selection based off of the proximity to other data points regardless of what feature the numerical values represent. Being a lazy learning algorithm implies that there is little to no training phase. Therefore, we can immediately classify new data points as they present themselves. ''',height=150)
     st.text_area("RFC (Random Forest Classification",''' Random forest is a supervised learning algorithm. The "forest" it builds, is an ensemble of decision trees, usually trained with the “bagging” method. The general idea of the bagging method is that a combination of learning models increases the overall result. In simple words random forest builds multiple decision trees and merges them together to get a more accurate and stable prediction. ''',height=150)
-    st.text_area("CLF",'''  ''',height=150)
+    st.text_area("CLF",'''  Similar to SVC with parameter kernel=’linear’, but implemented in terms of liblinear rather than libsvm, so it has more flexibility in the choice of penalties and loss functions and should scale better to large numbers of samples.
+This class supports both dense and sparse input and the multiclass support is handled according to a one-vs-the-rest scheme. ''',height=150)
     algo=st.selectbox("Choose an algorithm to run",(' ','Gaussian NB','KNeighborsClassifier','RFS','CLF'))
     if config.file is not None:
         file = config.file
