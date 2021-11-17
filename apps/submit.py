@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 import spacy
+from altair.vegalite.v3.theme import theme
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
@@ -14,7 +15,15 @@ import config
 import apps
 
 def app():
-    st.markdown("<h1 style='text-align: center;'>Submit Form</h1>", unsafe_allow_html=True)
+    st.markdown("""
+         <style>
+         div.stButton > button:first-child {
+             background-color: #0099ff;
+             color:#ffffff;
+         }
+         </style>""", unsafe_allow_html=True)
+
+    st.markdown("<h1 style='text-align: center;'>SUBMIT FORM</h1>", unsafe_allow_html=True)
 
     st.write('In this Page the user has the option to add review for the Hotel.'
              'The Algorithm takes this result and find the review. Also, in this page there is a slide bar.'
@@ -22,7 +31,7 @@ def app():
              'If the value is equals to 5 then balloons will appear.'
              'The code below is clean the data and takes the rating from the previous page.')
 
-    st.subheader('Types of Prediction of given data:')
+    st.subheader('TYPES OF PREDICTION OF GIVEN DATA:')
     code = '''
     nlp = spacy.load("en_core_web_lg")
     doc = nlp("very good")
@@ -35,7 +44,7 @@ def app():
     clf.predict(vec)
     '''
     st.code(code, 'python')
-    st.subheader('Data converted:')
+    st.subheader('DATA CONVERTED:')
 
     with st.form("my_forms"):
 

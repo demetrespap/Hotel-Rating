@@ -23,8 +23,14 @@ from sklearn.ensemble import RandomForestClassifier
 
 
 def app():
-    st.markdown("<h1 style='text-align: center;'>Choose Model:</h1>", unsafe_allow_html=True)
-
+    m = st.markdown("""
+         <style>
+         div.stButton > button:first-child {
+             background-color: #0099ff;
+             color:#ffffff;
+         }
+         </style>""", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center;'>CHOOSE MODEL</h1>", unsafe_allow_html=True)
     st.write("In this screen you can choose between 4 different algorithms in order to start the learning process. Also we explain some functions which manipulate the dataset in order for the algorithm to receive correct and valid data")
 
     col1,col2 = st.columns(2)
@@ -122,7 +128,7 @@ This class supports both dense and sparse input and the multiclass support is ha
 
     #DEPENDED from choosed model
     #*******************************
-    st.title("Get average Data ")
+    st.title("GET AVERAGE DATA: ")
     # get balaned data
     code = '''def get_average_data(df):
           max_num = (df.groupby(["Rating"]).count().sum()[0] / len(df["Rating"].unique()))

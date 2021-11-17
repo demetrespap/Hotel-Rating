@@ -10,16 +10,23 @@ from sklearn import datasets
 import matplotlib.pyplot as plt
 import config
 def app():
+    m = st.markdown("""
+         <style>
+         div.stButton > button:first-child {
+             background-color: #0099ff;
+             color:#ffffff;
+         }
+         </style>""", unsafe_allow_html=True)
 
     file = None
     config.file = None
     data_file = None
 
-    st.markdown("<h1 style='text-align: center;'>Upload Data</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center;'>UPLOAD DATA</h1>", unsafe_allow_html=True)
 
     st.write("On this page the user will need to import a csv file. This file will contain data depending on the user review and the corresponding ratings. "
              "This data will be displayed at the bottom of the screen and the csv file will be saved in the cache.")
-    st.subheader("Dataset")
+    st.subheader("DATASET")
     data_file = st.file_uploader("Upload CSV", type=['csv'])
     if data_file is not None:
         df = pd.read_csv(data_file)

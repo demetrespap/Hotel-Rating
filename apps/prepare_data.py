@@ -36,7 +36,15 @@ def get_clean(x):
   return x
 
 def app():
-  str.markdown("<h1 style='text-align: center;'>Prepare Data</h1>", unsafe_allow_html=True)
+  str.markdown("""
+       <style>
+       div.stButton > button:first-child {
+           background-color: #0099ff;
+           color:#ffffff;
+       }
+   
+       </style>""", unsafe_allow_html=True)
+  str.markdown("<h1 style='text-align: center;'>PREPARE DATA</h1>", unsafe_allow_html=True)
 
   str.write("In this Page we clean the Data.We will capture the data from the csv file, from the previous page.")
 
