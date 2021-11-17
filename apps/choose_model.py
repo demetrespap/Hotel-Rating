@@ -81,40 +81,41 @@ It's specifically used when the features have continuous values. It's also assum
     st.text_area("RFC (Random Forest Classification",''' Random forest is a supervised learning algorithm. The "forest" it builds, is an ensemble of decision trees, usually trained with the “bagging” method. The general idea of the bagging method is that a combination of learning models increases the overall result. In simple words random forest builds multiple decision trees and merges them together to get a more accurate and stable prediction. ''',height=150)
     st.text_area("CLF",'''  ''',height=150)
     algo=st.selectbox("Choose an algorithm to run",(' ','Gaussian NB','KNeighborsClassifier','RFS','CLF'))
-    if config.file is not None:
-        file = config.file
-        if algo == 'Gaussian NB':
-            st.info("Gaussian NB algorithm started")
-            df_for_training = nlp_represent(file)
-            X = df_for_training.drop(columns=['Review', 'Rating', 'Review_vec'])
-            y = df_for_training['Rating']
-            gaussianNB(X,y)
-
-
-        elif algo == 'KNeighborsClassifier':
-                st.info("KNeighborsClassifier algorithm starting")
+    if algo is not ' ' and algo is not None:
+        if config.file is not None:
+            file = config.file
+            if algo == 'Gaussian NB':
+                st.info("Gaussian NB algorithm started")
                 df_for_training = nlp_represent(file)
                 X = df_for_training.drop(columns=['Review', 'Rating', 'Review_vec'])
                 y = df_for_training['Rating']
-                KNeighboursClassifier(X,y)
+                gaussianNB(X,y)
 
 
-        elif algo == 'RFS':
-                st.info("RFS algorithm starting")
-                df_for_training = nlp_represent(file)
-                X = df_for_training.drop(columns=['Review', 'Rating', 'Review_vec'])
-                y = df_for_training['Rating']
-                RandomClassifiers(X,y)
+            elif algo == 'KNeighborsClassifier':
+                    st.info("KNeighborsClassifier algorithm starting")
+                    df_for_training = nlp_represent(file)
+                    X = df_for_training.drop(columns=['Review', 'Rating', 'Review_vec'])
+                    y = df_for_training['Rating']
+                    KNeighboursClassifier(X,y)
 
 
-        elif algo == 'CLF':
-                st.info("CLF algorithm starting")
-                df_for_training = get_average_data(file)
-                tfidf = TfidfVectorizer(max_features=15000, ngram_range=(1, 5), analyzer='char')
-                config.tfidf = tfidf
-                X = tfidf.fit_transform(df_for_training['Review'])
-                y = df_for_training['Rating']
-                clf(X,y)
+            elif algo == 'RFS':
+                    st.info("RFS algorithm starting")
+                    df_for_training = nlp_represent(file)
+                    X = df_for_training.drop(columns=['Review', 'Rating', 'Review_vec'])
+                    y = df_for_training['Rating']
+                    RandomClassifiers(X,y)
+
+
+            elif algo == 'CLF':
+                    st.info("CLF algorithm starting")
+                    df_for_training = get_average_data(file)
+                    tfidf = TfidfVectorizer(max_features=15000, ngram_range=(1, 5), analyzer='char')
+                    config.tfidf = tfidf
+                    X = tfidf.fit_transform(df_for_training['Review'])
+                    y = df_for_training['Rating']
+                    clf(X,y)
 
 
 
