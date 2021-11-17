@@ -23,8 +23,9 @@ from sklearn.ensemble import RandomForestClassifier
 
 
 def app():
-    st.header('Choose Model')
-    st.write("In the Page you have to choose the Algorithm you want to Run.")
+    st.markdown("<h1 style='text-align: center;'>Choose Model:</h1>", unsafe_allow_html=True)
+
+    st.write("In this screen you can choose between 4 different algorithms in order to start the learning process. Also we explain some functions which manipulate the dataset in order for the algorithm to receive correct and valid data")
 
     col1,col2 = st.columns(2)
     col3,col4 = st.columns(2)
@@ -73,47 +74,53 @@ y_pred = clf.predict(X_test)
         st.code(code6, 'Python')
 
 
+    st.title("Algorithms featured")
+    st.text_area("Gaussian NB",'''Naive Bayes methods are a set of supervised learning algorithms based on applying Bayes’ theorem with the “naive” assumption of conditional independence between every pair of features given the value of the class variable. The Gaussian Naive Bayes algorithm is a special type of NB algorithm.
+It's specifically used when the features have continuous values. It's also assumed that all the features are following a gaussian distribution ''',height=150)
+    st.text_area(" KNeighborsClassifier ",''' K-Nearest Neighbors, or KNN for short, is one of the simplest machine learning algorithms and is used in a wide array of institutions. KNN is a non-parametric, lazy learning algorithm. When we say a technique is non-parametric, it means that it does not make any assumptions about the underlying data. In other words, it makes its selection based off of the proximity to other data points regardless of what feature the numerical values represent. Being a lazy learning algorithm implies that there is little to no training phase. Therefore, we can immediately classify new data points as they present themselves. ''',height=150)
+    st.text_area("RFC (Random Forest Classification",''' Random forest is a supervised learning algorithm. The "forest" it builds, is an ensemble of decision trees, usually trained with the “bagging” method. The general idea of the bagging method is that a combination of learning models increases the overall result. In simple words random forest builds multiple decision trees and merges them together to get a more accurate and stable prediction. ''',height=150)
+    st.text_area("CLF",'''  ''',height=150)
     algo=st.selectbox("Choose an algorithm to run",(' ','Gaussian NB','KNeighborsClassifier','RFS','CLF'))
     if config.file is not None:
         file = config.file
         if algo == 'Gaussian NB':
-            st.write("A")
+            st.info("Gaussian NB algorithm started")
             df_for_training = nlp_represent(file)
             X = df_for_training.drop(columns=['Review', 'Rating', 'Review_vec'])
             y = df_for_training['Rating']
             gaussianNB(X,y)
-            st.write("B")
+
 
         elif algo == 'KNeighborsClassifier':
-                st.write("C")
+                st.info("KNeighborsClassifier algorithm starting")
                 df_for_training = nlp_represent(file)
                 X = df_for_training.drop(columns=['Review', 'Rating', 'Review_vec'])
                 y = df_for_training['Rating']
                 KNeighboursClassifier(X,y)
-                st.write("D")
+
 
         elif algo == 'RFS':
-                st.write("E")
+                st.info("RFS algorithm starting")
                 df_for_training = nlp_represent(file)
                 X = df_for_training.drop(columns=['Review', 'Rating', 'Review_vec'])
                 y = df_for_training['Rating']
                 RandomClassifiers(X,y)
-                st.write("F")
+
 
         elif algo == 'CLF':
-                st.write("G")
+                st.info("CLF algorithm starting")
                 df_for_training = get_average_data(file)
                 tfidf = TfidfVectorizer(max_features=15000, ngram_range=(1, 5), analyzer='char')
                 config.tfidf = tfidf
                 X = tfidf.fit_transform(df_for_training['Review'])
                 y = df_for_training['Rating']
                 clf(X,y)
-                st.write("H")
+
 
 
     #DEPENDED from choosed model
     #*******************************
-    st.write("Get average Data ")
+    st.title("Get average Data ")
     # get balaned data
     code = '''def get_average_data(df):
           max_num = (df.groupby(["Rating"]).count().sum()[0] / len(df["Rating"].unique()))
@@ -140,8 +147,11 @@ y_pred = clf.predict(X_test)
             print(new_df['Rating'].value_counts())
           return new_df'''
     st.code(code, 'python')
+    st.text_area("",'''This part of the code it is summoned only for the CLF algorithm before it starts running and it is summoned in order to check for low rating values because they are much less tha high rating values and the duplicates the values. This is done in order for the algorith to hava an equale number of values in all rating scale.''', height=150)
 
-    st.write("NLP Represenent ")
+# NLP representer
+# -------------------------------------------------------------------------
+    st.title("NLP Represenent ")
     code7 = '''
 def nlp_represent(df):
     nlp = spacy.load("en_core_web_lg")
@@ -155,8 +165,11 @@ def nlp_represent(df):
     return df_for_training
         '''
     st.code(code7, 'Python')
+    st.text_area("",''' It is summoned by the gaussianNB, KneighborClassifier and RFS algorithm. This part of the code is responsible for  ''',height=150)
 
-    st.write("Training collumns")
+#Training collumns
+#-------------------------------------------------------------------------
+    st.title("Training collumns")
     code8 = '''
 df_for_training = nlp_represent(df)
 df_for_training.columns
@@ -167,6 +180,7 @@ y = df_for_training['Rating']
 X_train,X_test,y_train, y_test = train_test_split(X, y , test_size = 0.25, random_state = 0)
                 '''
     st.code(code8, 'Python')
+    st.text_area(" ",'''  ''',height=150)
 
 def get_average_data(df):
     max_num = (df.groupby(["Rating"]).count().sum()[0] / len(df["Rating"].unique()))
@@ -210,7 +224,6 @@ def nlp_represent(df):
 # ===============================================================
 
 def gaussianNB(X,y):
-    st.write("1")
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
     gnb = GaussianNB()
     gnb.fit(X_train, y_train)
@@ -220,10 +233,9 @@ def gaussianNB(X,y):
     config.y_test = y_test
     config.y_pred = y_pred
     config.sub_pred = 1
-    st.write("2")
+    st.success("The algorithm completed")
 
 def KNeighboursClassifier(X,y):
-    st.write("3")
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
     nbrs = KNeighborsClassifier()
     nbrs.fit(X_train, y_train)
@@ -233,10 +245,9 @@ def KNeighboursClassifier(X,y):
     config.y_test = y_test
     config.y_pred = y_pred
     config.sub_pred = 1
-    st.write("4")
+    st.success("The algorithm completed")
 
 def RandomClassifiers(X,y):
-    st.write("5")
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
     rfs = RandomForestClassifier()
     rfs.fit(X_train, y_train)
@@ -246,11 +257,10 @@ def RandomClassifiers(X,y):
     config.y_test = y_test
     config.y_pred = y_pred
     config.sub_pred = 1
-    st.write("6")
+    st.success("The algorithm completed")
 
 
 def clf(X,y):
-    st.write("7")
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
     clf = LinearSVC(C=10, class_weight='balanced')
     y_train = y_train.astype('int')
@@ -261,4 +271,4 @@ def clf(X,y):
     config.y_test = y_test
     config.y_pred = y_pred
     config.sub_pred = 0
-    st.write("8")
+    st.success("The algorithm completed")

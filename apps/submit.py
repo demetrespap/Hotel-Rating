@@ -14,10 +14,13 @@ import config
 import apps
 
 def app():
-    st.header('Submit Form')
+    st.markdown("<h1 style='text-align: center;'>Submit Form</h1>", unsafe_allow_html=True)
+
     st.write('In this Page the user has the option to add review for the Hotel.'
-             'The Algorithm takes this result and find the review. Also,the Page it shows this Rating in Message.'
-             'If the result is equal to 5 then balloons will appear.')
+             'The Algorithm takes this result and find the review. Also, in this page there is a slide bar.'
+             'The value in this bar is change depends on the rating it takes.'
+             'If the value is equals to 5 then balloons will appear.'
+             'The code below is clean the data and takes the rating from the previous page.')
 
     st.subheader('Types of Prediction of given data:')
     code = '''

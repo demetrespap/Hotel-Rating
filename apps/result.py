@@ -9,7 +9,8 @@ from apps import choose_model
 import config
 
 def app():
-    st.header('Result')
+    st.markdown("<h1 style='text-align: center;'>Result</h1>", unsafe_allow_html=True)
+
     code = '''
     classification_report(y_test.astype('int'), y_pred)
     plot_confusion_matrix(nbrs, X_test, y_test.astype('int'))'''

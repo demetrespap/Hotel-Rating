@@ -1,4 +1,5 @@
 import sys
+import time
 
 import altair as alt
 import seaborn as sns
@@ -14,7 +15,8 @@ def app():
     config.file = None
     data_file = None
 
-    st.title('Data')
+    st.markdown("<h1 style='text-align: center;'>Upload Data</h1>", unsafe_allow_html=True)
+
     st.write("On this page the user will need to import a csv file. This file will contain data depending on the user review and the corresponding ratings. "
              "This data will be displayed at the bottom of the screen and the csv file will be saved in the cache.")
     st.subheader("Dataset")
@@ -26,11 +28,13 @@ def app():
     if st.button("Process"):
         if file is not None:
             st.dataframe(file)
+        st.success('File Uploaded Successfully!')
 
     code2 ='''print(new_df['Rating'].value_counts())
     new_df.value_counts().plot.bar()'''
     st.code(code2, 'python')
     if st.button('Run'):
+        st.success('Code Run Successfully!')
         sns.countplot(x="Rating", data=file)
         st.set_option('deprecation.showPyplotGlobalUse', False)
         st.pyplot()

@@ -36,7 +36,8 @@ def get_clean(x):
   return x
 
 def app():
-  str.header('Prepare Data')
+  str.markdown("<h1 style='text-align: center;'>Prepare Data</h1>", unsafe_allow_html=True)
+
   str.write("In this Page we clean the Data.We will capture the data from the csv file, from the previous page.")
 
   code = '''
