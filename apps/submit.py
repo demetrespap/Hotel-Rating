@@ -43,26 +43,25 @@ def app():
         rating = 0
 
         # if config.sub_pred is not None:
-        if config.sub_pred == 0:
-            title = get_clean(title)
-            vec = config.tfidf.transform([title])
-            rating = config.type.predict(vec)[0]
-            rating = int(rating)
-        elif config.sub_pred == 1:
-            nlp = spacy.load("en_core_web_lg")
-            doc = nlp(title)
-            script_vector = pd.DataFrame(doc.vector)
-            rating = config.type.predict(script_vector.T)[0]
-            rating = int(rating)
-
         submit = st.form_submit_button("Submit")
-
         if submit:
-            slider_val = st.slider("Rating Slider", min_value=1, max_value=5, value=rating)
-            st.write("Rating set to:", slider_val)
-        if rating == 5:
-            st.success('This is a success message!')
-            st.balloons()
+            if config.sub_pred == 0:
+                title = get_clean(title)
+                vec = config.tfidf.transform([title])
+                rating = config.type.predict(vec)[0]
+                rating = int(rating)
+            elif config.sub_pred == 1:
+                nlp = spacy.load("en_core_web_lg")
+                doc = nlp(title)
+                script_vector = pd.DataFrame(doc.vector)
+                rating = config.type.predict(script_vector.T)[0]
+                rating = int(rating)
+
+                slider_val = st.slider("Rating Slider", min_value=1, max_value=5, value=rating)
+                st.write("Rating set to:", slider_val)
+            if rating == 5:
+                st.success('This is a success message!')
+                st.balloons()
 
 
 def get_clean(x):
