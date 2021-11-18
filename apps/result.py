@@ -17,8 +17,7 @@ def app():
          }
          </style>""", unsafe_allow_html=True)
     st.markdown("<h1 style='text-align: center;'>RESULT</h1>", unsafe_allow_html=True)
-    st.write("""When we select the Run button, the code at the top of the screen will run. 
-          This data, are the reviews that will appears in the graph shown above. This rating will be from 1 to 5 in relation to the time it took to run.  """)
+    st.write("""In this part of the application we receive the output of the algorithm from the previous screen and we present a confusion matrix containing the predicted rating form the algorithm and the true rating provided by the data set.""")
 
     code = '''
     classification_report(y_test.astype('int'), y_pred)
@@ -31,6 +30,5 @@ def app():
             st.set_option('deprecation.showPyplotGlobalUse', False)
             st.pyplot()
             st.write(classification_report(config.y_test.astype('int'),config.y_pred))
-    st.text_area(" ",''' In this part of the code we receive the output output of the algorithm from the previous screen and we present a confusion matrix containing the predicted rating form the algorithm and the true rating provided by the data set.''')
 
 
