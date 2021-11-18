@@ -25,11 +25,11 @@ def app():
 
     st.markdown("<h1 style='text-align: center;'>SUBMIT FORM</h1>", unsafe_allow_html=True)
 
-    st.write('In this Page the user has the option to add review for the Hotel.'
-             'The Algorithm takes this result and find the review. Also, in this page there is a slide bar.'
-             'The value in this bar is change depends on the rating it takes.'
-             'If the value is equals to 5 then balloons will appear.'
-             'The code below is clean the data and takes the rating from the previous page.')
+    st.write('In the last part of the process, the user has the option to add review for the Hotel.'
+             ' The Algorithm takes this result and find the review after clicking submit.'
+             ' The value of the slide bar ate the bottom changes according the rating it is given'
+             ' If the value is equals to 5 then balloons will appear.'
+             ' The code below is clean the data and takes the rating from the previous page.')
 
     st.subheader('TYPES OF PREDICTION OF GIVEN DATA:')
     code = '''
