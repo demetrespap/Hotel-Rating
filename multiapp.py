@@ -41,13 +41,13 @@ class MultiApp:
         })
 
     def run(self):
-        st.sidebar.image('home.png', use_column_width=True)
 
         # app = st.sidebar.radio(
         app = st.sidebar.selectbox(
             'Navigate from here:',
             self.apps,
             format_func=lambda app: app['title'])
+
 
 
         app['function']()

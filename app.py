@@ -5,7 +5,43 @@ import config
 # import your app modules here
 
 app = MultiApp()
+html = """
+  <style>
 
+    header > .toolbar {
+      flex-direction: row-reverse;
+      left: 1rem;
+      right: auto;
+    }
+
+    .sidebar .sidebar-collapse-control,
+    .sidebar.--collapsed .sidebar-collapse-control {
+      left: auto;
+      right: 0.5rem;
+    }
+
+    .sidebar .sidebar-content {
+      transition: margin-left .3s, box-shadow .3s;
+    }
+
+    .sidebar.--collapsed .sidebar-content {
+      margin-left: auto;
+      margin-right: -21rem;
+    }
+
+    .sidebar .sidebar-content {
+    background-color: #111 !important;
+    }
+
+    @media (max-width: 991.98px) {
+      .sidebar .sidebar-content {
+        margin-left: auto;
+      }
+    }
+  
+  </style>
+"""
+st.markdown(html, unsafe_allow_html=True)
 # Add all your application here
 app.add_app("Home", home.app)
 app.add_app("Data", data.app)
