@@ -40,6 +40,7 @@ def app():
     code2 ='''print(new_df['Rating'].value_counts())
     new_df.value_counts().plot.bar()'''
     st.code(code2, 'python')
+    st.text_area("Printing the data",'''In this part of the code, after uploading the csv file containing the data  we print in form of plot bar the number of reviews bases on how hight the rating is (1,2,3,4,5) ''')
     if st.button('Run'):
         st.success('Code Run Successfully!')
         sns.countplot(x="Rating", data=file)

@@ -31,5 +31,6 @@ def app():
             st.set_option('deprecation.showPyplotGlobalUse', False)
             st.pyplot()
             st.write(classification_report(config.y_test.astype('int'),config.y_pred))
+    st.text_area(" ",''' In this part of the code we receive the output output of the algorithm from the previous screen and we present a confusion matrix containing the predicted rating form the algorithm and the true rating provided by the data set.''')
 
 

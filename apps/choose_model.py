@@ -37,7 +37,7 @@ def app():
     col3,col4 = st.columns(2)
 
     with col1:
-        st.write("Gaussian NB")
+        st.write("**Gaussian NB**")
         code3 = '''
 gnb = GaussianNB()
 gnb.fit(X_train, y_train)
@@ -83,8 +83,8 @@ y_pred = clf.predict(X_test)
     st.title("Algorithms featured")
     st.text_area("Gaussian NB",'''Naive Bayes methods are a set of supervised learning algorithms based on applying Bayes’ theorem with the “naive” assumption of conditional independence between every pair of features given the value of the class variable. The Gaussian Naive Bayes algorithm is a special type of NB algorithm.
 It's specifically used when the features have continuous values. It's also assumed that all the features are following a gaussian distribution ''',height=150)
-    st.text_area(" KNeighborsClassifier ",''' K-Nearest Neighbors, or KNN for short, is one of the simplest machine learning algorithms and is used in a wide array of institutions. KNN is a non-parametric, lazy learning algorithm. When we say a technique is non-parametric, it means that it does not make any assumptions about the underlying data. In other words, it makes its selection based off of the proximity to other data points regardless of what feature the numerical values represent. Being a lazy learning algorithm implies that there is little to no training phase. Therefore, we can immediately classify new data points as they present themselves. ''',height=150)
-    st.text_area("RFC (Random Forest Classification",''' Random forest is a supervised learning algorithm. The "forest" it builds, is an ensemble of decision trees, usually trained with the “bagging” method. The general idea of the bagging method is that a combination of learning models increases the overall result. In simple words random forest builds multiple decision trees and merges them together to get a more accurate and stable prediction. ''',height=150)
+    st.text_area("KNeighborsClassifier",''' K-Nearest Neighbors, or KNN for short, is one of the simplest machine learning algorithms and is used in a wide array of institutions. KNN is a non-parametric, lazy learning algorithm. When we say a technique is non-parametric, it means that it does not make any assumptions about the underlying data. In other words, it makes its selection based off of the proximity to other data points regardless of what feature the numerical values represent. Being a lazy learning algorithm implies that there is little to no training phase. Therefore, we can immediately classify new data points as they present themselves. ''',height=150)
+    st.text_area("RFC (Random Forest Classification)",''' Random forest is a supervised learning algorithm. The "forest" it builds, is an ensemble of decision trees, usually trained with the “bagging” method. The general idea of the bagging method is that a combination of learning models increases the overall result. In simple words random forest builds multiple decision trees and merges them together to get a more accurate and stable prediction. ''',height=150)
     st.text_area("CLF",'''  Similar to SVC with parameter kernel=’linear’, but implemented in terms of liblinear rather than libsvm, so it has more flexibility in the choice of penalties and loss functions and should scale better to large numbers of samples.
 This class supports both dense and sparse input and the multiclass support is handled according to a one-vs-the-rest scheme. ''',height=150)
     algo=st.selectbox("Choose an algorithm to run",(' ','Gaussian NB','KNeighborsClassifier','RFS','CLF'))
@@ -188,7 +188,7 @@ y = df_for_training['Rating']
 X_train,X_test,y_train, y_test = train_test_split(X, y , test_size = 0.25, random_state = 0)
                 '''
     st.code(code8, 'Python')
-    st.text_area(" ",'''  ''',height=150)
+    st.text_area(" ",''' In this areas the txt is transformes in to numbers and we split the data with 75% of the going for the testing and the rest 25% going for the model training ''')
 
 def get_average_data(df):
     max_num = (df.groupby(["Rating"]).count().sum()[0] / len(df["Rating"].unique()))
