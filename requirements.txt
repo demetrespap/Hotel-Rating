@@ -9,3 +9,5 @@ config==0.5.1
 scikit-learn==1.0.1
 self==2020.12.3
 imblearn==0.0
+turtle==0.0.1
+preprocess_kgptalkie==0.1.3
