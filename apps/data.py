@@ -9,6 +9,8 @@ import pandas as pd
 from sklearn import datasets
 import matplotlib.pyplot as plt
 import config
+from sklearn import datasets
+
 def app():
     m = st.markdown("""
          <style>

@@ -48,7 +48,7 @@ plot_confusion_matrix(gnb, X_test, y_test.astype('int'))
         st.code(code3, 'Python')
 
     with col2:
-        st.write("KNeighborsClassifier")
+        st.write("**KNeighborsClassifier**")
         code4 = '''
 nbrs = KNeighborsClassifier()
 nbrs.fit(X_train, y_train)
@@ -59,7 +59,7 @@ plot_confusion_matrix(nbrs, X_test, y_test.astype('int'))
         st.code(code4, 'Python')
 
     with col3:
-        st.write("RFS")
+        st.write("**RFS**")
         code5 = '''
 rfs = RandomForestClassifier()
 rfs.fit(X_train, y_train)
@@ -70,7 +70,7 @@ plot_confusion_matrix(nbrs, X_test, y_test.astype('int'))
         st.code(code5, 'Python')
 
     with col4:
-        st.write("CLF")
+        st.write("**CLF**")
         code6 = '''
 clf = LinearSVC(C=10, class_weight='balanced')
 y_train=y_train.astype('int')
