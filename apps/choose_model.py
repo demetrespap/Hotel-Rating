@@ -10,7 +10,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.svm import LinearSVC
 from sklearn.metrics import classification_report
-from apps import data
+from apps import prepare_data
 import re
 import string
 from sklearn.metrics import plot_confusion_matrix
