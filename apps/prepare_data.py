@@ -1,4 +1,3 @@
-from turtle import st
 import streamlit as str
 import spacy
 import pandas as pd
