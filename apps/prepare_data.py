@@ -51,7 +51,6 @@ def app():
   x = ps.cont_exp(x)
   x = ps.remove_emails(x)
   x = ps.remove_urls(x)
-  x = ps.remove_html_tags(x)
   x = ps.remove_rt(x)
   x = ps.remove_accented_chars(x)
   x = ps.remove_special_chars(x)
@@ -59,7 +58,7 @@ def app():
   return x
         '''
   str.code(code, 'python')
-  print(config.file)
+
   if str.button("Run",key=1):
     x = config.file
     str.write(x)
@@ -77,8 +76,6 @@ def app():
     "•Remove emails expression will delete if there is emails in the code. This code appears in the third line: x = ps.remove_emails(x).")
   str.write(
     "•Remove URLs expression will delete if there is URLs in the code. This code appears in the third line: x = ps.remove_urls(x).")
-  str.write(
-    "•Remove Html Tags expression will delete if there is Html Tags in the code. This code appears in the third line: x = ps.remove_html_tags(x).")
   str.write(
     "•Remove Strings expression will delete if there is Strings in the object added to filename. This code appears in the third line:   x = ps.remove_rt(x).")
   str.write(
