@@ -1,4 +1,5 @@
 import streamlit as st
+import preprocess_kgptalkie
 from multiapp import MultiApp
 from apps import home, data, prepare_data, result, submit, choose_model
 import config
