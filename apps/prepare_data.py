@@ -9,10 +9,12 @@ from sklearn.model_selection import train_test_split
 from sklearn.svm import LinearSVC
 from sklearn.metrics import classification_report
 from apps import data
-
+import subprocess
+import sys
 import re
 from sklearn.metrics import plot_confusion_matrix
 import config
+import preprocess_kgptalkie as ps
 from apps import data
 # check version number
 import imblearn
@@ -20,7 +22,8 @@ import imblearn
 
 
 def get_clean(x):
-  import preprocess_kgptalkie as ps
+  subprocess.check_call([sys.executable, "-m", "pip", "install", ps])
+
   x.lower()
   x.replace('\\', '')
   x.replace('_', ' ')
