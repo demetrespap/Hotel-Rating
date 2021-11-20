@@ -1,6 +1,6 @@
 import streamlit as st
 from multiapp import MultiApp
-from apps import home, data, model, prepare_data, result, submit, choose_model
+from apps import home, data, prepare_data, result, submit, choose_model
 import config
 # import your app modules here
 
