@@ -217,7 +217,8 @@ def get_average_data(df):
     return new_df
 
 def nlp_represent(df):
-    nlp = spacy.load("en_core_web_lg")
+    encore="en_core_web_lg"
+    nlp = spacy.load(encore)
     def vector_representation(row):
         doc = nlp(row['Review'])
         return doc.vector
