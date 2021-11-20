@@ -14,3 +14,4 @@ self==2020.12.3
 imblearn==0.0
 PyYAML==6.0
 tk==0.1.0
+textblob
