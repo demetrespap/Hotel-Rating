@@ -9,8 +9,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.svm import LinearSVC
 from sklearn.metrics import classification_report
 from apps import data
-import subprocess
-import sys
 import re
 from sklearn.metrics import plot_confusion_matrix
 import config
@@ -22,7 +20,6 @@ import imblearn
 
 
 def get_clean(x):
-  subprocess.check_call([sys.executable, "-m", "pip", "install", ps])
 
   x.lower()
   x.replace('\\', '')
