@@ -3,7 +3,7 @@ git+https://github.com/laxmimerit/preprocess_kgptalkie.git
 bs4
 textblob
 streamlit==1.2.0
-pandas==1.3.4
+pandas
 seaborn==0.11.2
 matplotlib==3.4.3
 numpy==1.21.4
