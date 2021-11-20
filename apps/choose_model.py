@@ -87,6 +87,7 @@ It's specifically used when the features have continuous values. It's also assum
     st.text_area("CLF",'''  Similar to SVC with parameter kernel=’linear’, but implemented in terms of liblinear rather than libsvm, so it has more flexibility in the choice of penalties and loss functions and should scale better to large numbers of samples.
 This class supports both dense and sparse input and the multiclass support is handled according to a one-vs-the-rest scheme. ''',height=150)
     algo=st.selectbox("Choose an algorithm to run",(' ','Gaussian NB','KNeighborsClassifier','RFS','CLF'))
+    st.write(config.file)
     if algo is not ' ' and algo is not None:
         if config.file is not None:
             file = config.file
