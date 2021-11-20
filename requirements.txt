@@ -9,7 +9,7 @@ matplotlib==3.4.3
 numpy==1.21.4
 altair==4.1.0
 spacy
-config==0.5.1
+config
 scikit-learn==1.0.1
 self==2020.12.3
 imblearn==0.0

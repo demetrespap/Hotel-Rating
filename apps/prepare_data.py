@@ -18,8 +18,6 @@ from apps import data
 # check version number
 import imblearn
 
-
-
 def get_clean(x):
 
   x.lower()
@@ -62,6 +60,7 @@ def app():
   return x
         '''
   str.code(code, 'python')
+  print(config.file)
   if str.button("Run",key=1):
     x = config.file
     str.write(x)
