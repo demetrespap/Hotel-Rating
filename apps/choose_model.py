@@ -93,8 +93,7 @@ This class supports both dense and sparse input and the multiclass support is ha
             file = config.file
             if algo == 'Gaussian NB':
                 st.info("Gaussian NB algorithm started")
-                average = get_average_data(file)
-                df_for_training = average
+                df_for_training = nlp_represent(file)
                 X = df_for_training.drop(columns=['Review', 'Rating', 'Review_vec'])
                 y = df_for_training['Rating']
                 gaussianNB(X,y)
@@ -102,8 +101,7 @@ This class supports both dense and sparse input and the multiclass support is ha
 
             elif algo == 'KNeighborsClassifier':
                     st.info("KNeighborsClassifier algorithm starting")
-                    average = get_average_data(file)
-                    df_for_training = average
+                    df_for_training = nlp_represent(file)
                     X = df_for_training.drop(columns=['Review', 'Rating', 'Review_vec'])
                     y = df_for_training['Rating']
                     KNeighboursClassifier(X,y)
@@ -111,8 +109,7 @@ This class supports both dense and sparse input and the multiclass support is ha
 
             elif algo == 'RFS':
                     st.info("RFS algorithm starting")
-                    average = get_average_data(file)
-                    df_for_training = average
+                    df_for_training = nlp_represent(file)
                     X = df_for_training.drop(columns=['Review', 'Rating', 'Review_vec'])
                     y = df_for_training['Rating']
                     RandomClassifiers(X,y)
