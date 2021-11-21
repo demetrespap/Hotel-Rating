@@ -91,7 +91,6 @@ This class supports both dense and sparse input and the multiclass support is ha
     if algo is not ' ' and algo is not None:
         if config.file is not None:
             file = config.file
-            file = get_average_data(file)
             if algo == 'Gaussian NB':
                 st.info("Gaussian NB algorithm started")
                 file = get_average_data(file)
@@ -102,30 +101,30 @@ This class supports both dense and sparse input and the multiclass support is ha
 
 
             elif algo == 'KNeighborsClassifier':
-                    st.info("KNeighborsClassifier algorithm starting")
-                    df_for_training = nlp_represent(file)
-                    X = df_for_training.drop(columns=['Review', 'Rating', 'Review_vec'])
-                    y = df_for_training['Rating']
-                    KNeighboursClassifier(X,y)
+                st.info("KNeighborsClassifier algorithm starting")
+                df_for_training = nlp_represent(file)
+                X = df_for_training.drop(columns=['Review', 'Rating', 'Review_vec'])
+                y = df_for_training['Rating']
+                KNeighboursClassifier(X,y)
 
 
             elif algo == 'RFS':
-                    st.info("RFS algorithm starting")
-                    file = get_average_data(file)
-                    df_for_training = nlp_represent(file)
-                    X = df_for_training.drop(columns=['Review', 'Rating', 'Review_vec'])
-                    y = df_for_training['Rating']
-                    RandomClassifiers(X,y)
+                st.info("RFS algorithm starting")
+                file = get_average_data(file)
+                df_for_training = nlp_represent(file)
+                X = df_for_training.drop(columns=['Review', 'Rating', 'Review_vec'])
+                y = df_for_training['Rating']
+                RandomClassifiers(X,y)
 
 
             elif algo == 'CLF':
-                    st.info("CLF algorithm starting")
-                    df_for_training = get_average_data(file)
-                    tfidf = TfidfVectorizer(max_features=15000, ngram_range=(1, 5), analyzer='char')
-                    config.tfidf = tfidf
-                    X = tfidf.fit_transform(df_for_training['Review'])
-                    y = df_for_training['Rating']
-                    clf(X,y)
+                st.info("CLF algorithm starting")
+                df_for_training = get_average_data(file)
+                tfidf = TfidfVectorizer(max_features=15000, ngram_range=(1, 5), analyzer='char')
+                config.tfidf = tfidf
+                X = tfidf.fit_transform(df_for_training['Review'])
+                y = df_for_training['Rating']
+                clf(X,y)
 
 
 
