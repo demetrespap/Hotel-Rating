@@ -98,14 +98,21 @@ This class supports both dense and sparse input and the multiclass support is ha
                 X = df_for_training.drop(columns=['Review', 'Rating', 'Review_vec'])
                 y = df_for_training['Rating']
                 gaussianNB(X,y)
+                sns.countplot(x="Rating", data=df_for_training)
+                st.set_option('deprecation.showPyplotGlobalUse', False)
+                st.pyplot()
 
 
             elif algo == 'KNeighborsClassifier':
                 st.info("KNeighborsClassifier algorithm starting")
+                file = get_average_data(file)
                 df_for_training = nlp_represent(file)
                 X = df_for_training.drop(columns=['Review', 'Rating', 'Review_vec'])
                 y = df_for_training['Rating']
                 KNeighboursClassifier(X,y)
+                sns.countplot(x="Rating", data=df_for_training)
+                st.set_option('deprecation.showPyplotGlobalUse', False)
+                st.pyplot()
 
 
             elif algo == 'RFS':
@@ -115,6 +122,9 @@ This class supports both dense and sparse input and the multiclass support is ha
                 X = df_for_training.drop(columns=['Review', 'Rating', 'Review_vec'])
                 y = df_for_training['Rating']
                 RandomClassifiers(X,y)
+                sns.countplot(x="Rating", data=df_for_training)
+                st.set_option('deprecation.showPyplotGlobalUse', False)
+                st.pyplot()
 
 
             elif algo == 'CLF':
@@ -125,6 +135,10 @@ This class supports both dense and sparse input and the multiclass support is ha
                 X = tfidf.fit_transform(df_for_training['Review'])
                 y = df_for_training['Rating']
                 clf(X,y)
+                sns.countplot(x="Rating", data=df_for_training)
+                st.set_option('deprecation.showPyplotGlobalUse', False)
+                st.pyplot()
+
 
 
 
