@@ -234,6 +234,7 @@ def nlp_represent(df):
 def gaussianNB(X,y):
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
     gnb = GaussianNB()
+    y_train = y_train.astype('int')
     gnb.fit(X_train, y_train)
     y_pred = gnb.predict(X_test)
     config.type = gnb
@@ -246,6 +247,7 @@ def gaussianNB(X,y):
 def KNeighboursClassifier(X,y):
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
     nbrs = KNeighborsClassifier()
+    y_train = y_train.astype('int')
     nbrs.fit(X_train, y_train)
     y_pred = nbrs.predict(X_test)
     config.type = nbrs
@@ -258,6 +260,7 @@ def KNeighboursClassifier(X,y):
 def RandomClassifiers(X,y):
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
     rfs = RandomForestClassifier()
+    y_train = y_train.astype('int')
     rfs.fit(X_train, y_train)
     y_pred = rfs.predict(X_test)
     config.type = rfs
