@@ -180,9 +180,6 @@ def nlp_represent(df):
     st.title("Training collumns")
     code8 = '''
 df_for_training = nlp_represent(df)
-df_for_training.columns
-y.value_counts().plot(kind='bar')
-
 X = df_for_training.drop(columns=['Review', 'Rating', 'Review_vec'])
 y = df_for_training['Rating']
 X_train,X_test,y_train, y_test = train_test_split(X, y , test_size = 0.25, random_state = 0)
