@@ -91,6 +91,7 @@ This class supports both dense and sparse input and the multiclass support is ha
     if algo is not ' ' and algo is not None:
         if config.file is not None:
             file = config.file
+            file = get_average_data(file)
             if algo == 'Gaussian NB':
                 st.info("Gaussian NB algorithm started")
                 df_for_training = nlp_represent(file)
