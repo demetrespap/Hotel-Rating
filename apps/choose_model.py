@@ -95,6 +95,9 @@ This class supports both dense and sparse input and the multiclass support is ha
                 st.info("Gaussian NB algorithm started")
                 average = get_average_data(file)
                 df_for_training = average
+                sns.countplot(x="Rating", data=df_for_training)
+                st.set_option('deprecation.showPyplotGlobalUse', False)
+                st.pyplot()
                 X = df_for_training.drop(columns=['Review', 'Rating', 'Review_vec'])
                 y = df_for_training['Rating']
                 gaussianNB(X,y)
@@ -104,6 +107,9 @@ This class supports both dense and sparse input and the multiclass support is ha
                     st.info("KNeighborsClassifier algorithm starting")
                     average = get_average_data(file)
                     df_for_training = average
+                    sns.countplot(x="Rating", data=df_for_training)
+                    st.set_option('deprecation.showPyplotGlobalUse', False)
+                    st.pyplot()
                     X = df_for_training.drop(columns=['Review', 'Rating', 'Review_vec'])
                     y = df_for_training['Rating']
                     KNeighboursClassifier(X,y)
@@ -113,6 +119,9 @@ This class supports both dense and sparse input and the multiclass support is ha
                     st.info("RFS algorithm starting")
                     average = get_average_data(file)
                     df_for_training = average
+                    sns.countplot(x="Rating", data=df_for_training)
+                    st.set_option('deprecation.showPyplotGlobalUse', False)
+                    st.pyplot()
                     X = df_for_training.drop(columns=['Review', 'Rating', 'Review_vec'])
                     y = df_for_training['Rating']
                     RandomClassifiers(X,y)
@@ -121,6 +130,9 @@ This class supports both dense and sparse input and the multiclass support is ha
             elif algo == 'CLF':
                     st.info("CLF algorithm starting")
                     df_for_training = get_average_data(file)
+                    sns.countplot(x="Rating", data=df_for_training)
+                    st.set_option('deprecation.showPyplotGlobalUse', False)
+                    st.pyplot()
                     tfidf = TfidfVectorizer(max_features=15000, ngram_range=(1, 5), analyzer='char')
                     config.tfidf = tfidf
                     X = tfidf.fit_transform(df_for_training['Review'])
