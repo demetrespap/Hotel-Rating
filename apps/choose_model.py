@@ -94,6 +94,7 @@ This class supports both dense and sparse input and the multiclass support is ha
             file = get_average_data(file)
             if algo == 'Gaussian NB':
                 st.info("Gaussian NB algorithm started")
+                file = get_average_data(file)
                 df_for_training = nlp_represent(file)
                 X = df_for_training.drop(columns=['Review', 'Rating', 'Review_vec'])
                 y = df_for_training['Rating']
@@ -110,6 +111,7 @@ This class supports both dense and sparse input and the multiclass support is ha
 
             elif algo == 'RFS':
                     st.info("RFS algorithm starting")
+                    file = get_average_data(file)
                     df_for_training = nlp_represent(file)
                     X = df_for_training.drop(columns=['Review', 'Rating', 'Review_vec'])
                     y = df_for_training['Rating']
