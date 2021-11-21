@@ -66,8 +66,8 @@ def app():
                 rating = config.type.predict(script_vector.T)[0]
                 rating = int(rating)
 
-                slider_val = st.slider("Rating Slider", min_value=1, max_value=5, value=rating)
-                st.write("Rating set to:", slider_val)
+            slider_val = st.slider("Rating Slider", min_value=1, max_value=5, value=rating)
+            st.write("Rating set to:", slider_val)
             if rating == 5:
                 st.success('Review added successful')
                 st.balloons()
